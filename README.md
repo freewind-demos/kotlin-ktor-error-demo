@@ -1,6 +1,16 @@
-Kotlin Ktor Demo
-================
+Kotlin Ktor Responds 404 for Exception Issue Demo
+=================================================
 
-Use [ktor](http://ktor.io) to write web server.
+发现在[ktor](http://ktor.io)中有一个bug:
 
-Run `Hello.kt` in your IDE, and open <http://localhost:8080> in your browser.
+当Server端发生了Exception时，它返回给客户端的居然是`404`，而不是`500`。
+
+Run `Hello.kt` in your IDE to start the server, then:
+
+```
+$ curl -I http://localhost:8080/
+HTTP/1.1 404 Not Found
+Content-Length: 0
+```
+
+显然是不合适的。已经提了Issue: <https://github.com/ktorio/ktor/issues/512>，等修复。
